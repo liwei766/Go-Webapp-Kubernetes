@@ -1,4 +1,4 @@
- **1) Building a sample web application in Go:** 
+ **1) Building a sample web application in Go:**   
   「Gorilla web toolkit」を使用して、golang web appを作成。（http://www.gorillatoolkit.org/pkg/mux　https://github.com/gorilla/mux）
   mkdir go-kubernetes
   cd go-kubernetes/
