@@ -136,14 +136,14 @@ CMD ["./main"]
   docker tag go-kubernetes callicoder/go-hello-world:1.0.0
   docker images
 
- **3) Building and pushing the docker image to dockerhub/aws ECR:** 
-  aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 443334274279.dkr.ecr.ap-northeast-1.amazonaws.com
-  docker tag 02e86642bd64  443334274279.dkr.ecr.ap-northeast-1.amazonaws.com/go-kubernetes
-  docker push 443334274279.dkr.ecr.ap-northeast-1.amazonaws.com/go-kubernetes
+ **3) Building and pushing the docker image to dockerhub/aws ECR:**   
+  aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 443334274279.dkr.ecr.ap-northeast-1.amazonaws.com  
+  docker tag 02e86642bd64  443334274279.dkr.ecr.ap-northeast-1.amazonaws.com/go-kubernetes  
+  docker push 443334274279.dkr.ecr.ap-northeast-1.amazonaws.com/go-kubernetes  
   
 
- **4) Deploying the golang webapp on EKS cluster (Creating a Kubernetes Service & Scaling a Kubernetes deployment)** 
-$ cat k8s-deployment.yaml
+ **4) Deploying the golang webapp on EKS cluster (Creating a Kubernetes Service & Scaling a Kubernetes deployment)**   
+$ cat k8s-deployment.yaml  
 
 ```
 
@@ -199,15 +199,15 @@ spec:
 ```
 
 
-$ k apply -f k8s-deployment.yaml
-$ k get svc
+$ k apply -f k8s-deployment.yaml  
+$ k get svc  
 > NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP                                                                    PORT(S)        AGE
 > go-hello-world-service   LoadBalancer   172.20.212.97   aad0dcf28ca5442e0b5ea2c1353dd28c-1763660814.ap-northeast-1.elb.amazonaws.com   80:31946/TCP   11m
 
-動作確認
->  $ curl aad0dcf28ca5442e0b5ea2c1353dd28c-1763660814.ap-northeast-1.elb.amazonaws.com
-> Hello, Guest
->  $ curl aad0dcf28ca5442e0b5ea2c1353dd28c-1763660814.ap-northeast-1.elb.amazonaws.com?name=liwei
+動作確認  
+>  $ curl aad0dcf28ca5442e0b5ea2c1353dd28c-1763660814.ap-northeast-1.elb.amazonaws.com  
+> Hello, Guest  
+>  $ curl aad0dcf28ca5442e0b5ea2c1353dd28c-1763660814.ap-northeast-1.elb.amazonaws.com?name=liwei  
 > Hello, liwei
 
 
